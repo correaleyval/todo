@@ -12,12 +12,14 @@ class MiCubacelInfo extends StatelessWidget {
   final CubacelClient client;
 
   String totalData(double restData, int percent) {
+    if (percent == 100) return restData.round().toString();
     final data = restData * 10 / (100 - percent);
 
     return data.toInt().toString();
   }
 
   String consumedData(double restData, int percent) {
+    if (percent == 100) return restData.round().toString();
     final data = restData * 100 / (100 - percent);
 
     return (data - restData).round().toString();
@@ -342,11 +344,4 @@ class MiCubacelInfo extends StatelessWidget {
       ),
     );
   }
-}
-
-class Percent {
-  final int total = 100;
-  final int percent;
-
-  Percent(this.percent);
 }
